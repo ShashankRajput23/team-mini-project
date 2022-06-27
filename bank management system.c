@@ -6,10 +6,8 @@ int main_exit;
 void menu();
 struct date{
     int month,day,year;
-
     };
 struct {
-
     char name[60];
     int acc_no,age;
     char address[60];
@@ -20,7 +18,6 @@ struct {
     struct date dob;
     struct date deposit;
     struct date withdraw;
-
     }add,upd,check,rem,transaction;
 
 float interest(float t,float amount,int rate)
@@ -28,20 +25,16 @@ float interest(float t,float amount,int rate)
     float SI;
     SI=(rate*t*amount)/100.0;
     return (SI);
-
 }
 void fordelay(int j)
 {   int i,k;
     for(i=0;i<j;i++)
          k=i;
 }
-
 void new_acc()
-
 {
     int choice;
     FILE *ptr;
-
     ptr=fopen("record.dat","a+");
     account_no:
     system("cls");
@@ -56,7 +49,6 @@ void new_acc()
             {printf("Account no. already in use!");
             fordelay(1000000000);
                 goto account_no;
-
             }
     }
     add.acc_no=check.acc_no;
@@ -78,8 +70,6 @@ void new_acc()
     scanf("%s",add.acc_type);
 
         fprintf(ptr,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
-
-
     fclose(ptr);
     printf("\nAccount created successfully!");
     add_invalid:
@@ -109,7 +99,6 @@ void view_list()
            printf("\n%6d\t %10s\t\t\t%10s\t\t%.0lf",add.acc_no,add.name,add.address,add.phone);
            test++;
        }
-
     fclose(view);
     if (test==0)
         {   system("cls");
@@ -160,7 +149,6 @@ void edit(void)
                 system("cls");
                 printf("Changes saved!");
                 }
-
         }
         else
             fprintf(newrec,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
@@ -169,7 +157,6 @@ void edit(void)
     fclose(newrec);
     remove("record.dat");
     rename("new.dat","record.dat");
-
 if(test!=1)
         {   system("cls");
             printf("\nRecord not found!!\a\a\a");
@@ -198,7 +185,6 @@ if(test!=1)
             close();
         }
 }
-
 void transact(void)
 {   int choice,test=0;
     FILE *old,*newrec;
@@ -279,7 +265,6 @@ void transact(void)
         else
             close();
    }
-
 }
 void erase(void)
 {
@@ -329,7 +314,6 @@ void erase(void)
         else
             close();
         }
-
 }
 
 void see(void)
@@ -345,13 +329,11 @@ void see(void)
     if (choice==1)
     {   printf("Enter the account number:");
         scanf("%d",&check.acc_no);
-
         while (fscanf(ptr,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d",&add.acc_no,add.name,&add.dob.month,&add.dob.day,&add.dob.year,&add.age,add.address,add.citizenship,&add.phone,add.acc_type,&add.amt,&add.deposit.month,&add.deposit.day,&add.deposit.year)!=EOF)
         {
             if(add.acc_no==check.acc_no)
             {   system("cls");
                 test=1;
-
                 printf("\nAccount NO.:%d\nName:%s \nDOB:%d/%d/%d \nAge:%d \nAddress:%s \nCitizenship No:%s \nPhone number:%.0lf \nType Of Account:%s \nAmount deposited:$ %.2f \nDate Of Deposit:%d/%d/%d\n\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,
                 add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
                 if(strcmpi(add.acc_type,"fixed1")==0)
@@ -383,15 +365,12 @@ void see(void)
                         rate=8;
                         intrst=interest(time,add.amt,rate);
                         printf("\n\nYou will get $.%.2f as interest on %d of every month",intrst,add.deposit.day);
-
                      }
                  else if(strcmpi(add.acc_type,"current")==0)
                     {
 
                         printf("\n\nYou will get no interest\a\a");
-
                      }
-
             }
         }
     }
@@ -434,20 +413,14 @@ void see(void)
                         rate=8;
                         intrst=interest(time,add.amt,rate);
                         printf("\n\nYou will get $.%.2f as interest on %d of every month",intrst,add.deposit.day);
-
                      }
                  else if(strcmpi(add.acc_type,"current")==0)
                     {
-
                         printf("\n\nYou will get no interest\a\a");
-
                      }
-
             }
         }
     }
-
-
     fclose(ptr);
      if(test!=1)
         {   system("cls");
@@ -476,23 +449,16 @@ void see(void)
             system("cls");
             menu();
         }
-
         else
            {
-
              system("cls");
             close();
             }
-
 }
-
-
 void close(void)
 {
     printf("\n\n\n\nThis C Mini Project is developed by Code With C team!");
     }
-
-
 void menu(void)
 {   int choice;
     system("cls");
@@ -519,11 +485,7 @@ void menu(void)
         break;
         case 7:close();
         break;
-
     }
-
-
-
 }
 int main()
 {
@@ -558,10 +520,8 @@ int main()
             scanf("%d",&main_exit);
             if (main_exit==1)
                     {
-
                         system("cls");
-                        main();
-                    }
+                        main();}
 
             else if (main_exit==0)
                     {
@@ -572,7 +532,5 @@ int main()
                     fordelay(1000000000);
                     system("cls");
                     goto login_try;}
-
-        }
-        return 0;
 }
+        return 0;}
